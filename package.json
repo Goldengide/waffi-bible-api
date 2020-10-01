@@ -1,0 +1,24 @@
+{
+  "name": "waffi-bible-api",
+  "version": "1.0.0",
+  "description": "This the first version ever of a unique translation of the Bible in warri language",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "eslint": "^7.9.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.10.6",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.4",
+    "passport": "^0.4.1"
+  },
+  "devDependencies": {
+    "debug": "^4.2.0"
+  }
+}
