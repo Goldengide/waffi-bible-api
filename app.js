@@ -1,21 +1,33 @@
-const express = require('express');
-const bodyParser = require('body-parser');
+import express from 'express';
+import bodyParser from 'body-parser';
+import  mongoose from "mongoose";
+import bookRoutes from "./src/routes/bookRoutes";
+import chapterRoutes from './src/routes/chapterRoutes';
 
-let app = express();
-let homeRoutes = express.Router();
-app.use("/", homeRoutes);
-homeRoutes.route("/")
-    .get((req, res) => {
-        res.json({
-            name: "Waffi Bible API",
-            alias: "waffi-bible-app",
-            developer: "Gideon Amowogbaje",
-            creator: "Alexander",
-            version: "1.0.0"
-        });
-    });
-app.listen(3010, function(){
-console.log("working!!!");
-})
 
-// learn the best formats of api
+const app = express();
+const PORT = 3030;
+
+mongoose.Promise = global.Promise;
+mongoose.connect('mongodb://localhost/productsdb', {
+    useNewUrlParser: true, 
+    useUnifiedTopology:true
+});
+
+
+
+
+// bodyparser setup
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json()); 
+
+//  Routes
+bookRoutes(app);
+chapterRoutes(app);
+app.get('/', (req, res) =>
+    res.send(`Store server running on port ${PORT}`)
+);
+
+app.listen(PORT, () => 
+    console.log(`Your server is running on port ${PORT}`)
+);
