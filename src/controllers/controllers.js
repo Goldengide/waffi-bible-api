@@ -1,9 +1,7 @@
 import mongoose from 'mongoose';
-import { BookSchema } from "../models/models";
-import { ChapterSchema } from "../models/models";
+import { Book } from "../models/models";
+// import { ChapterSchema } from "../models/models";
 
-const Book = mongoose.model('Book', BookSchema);
-const Chapter = mongoose.model('Chapter', ChapterSchema);
 
 export const addnewBook = (req, res) => {
     let newBook = new Book(req.body);

@@ -2,7 +2,6 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import  mongoose from "mongoose";
 import bookRoutes from "./src/routes/bookRoutes";
-import chapterRoutes from './src/routes/chapterRoutes';
 
 
 const app = express();
@@ -22,8 +21,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json()); 
 
 //  Routes
+// app.use('/book', bookRoutes);
 bookRoutes(app);
-chapterRoutes(app);
 app.get('/', (req, res) =>
     res.send(`Store server running on port ${PORT}`)
 );

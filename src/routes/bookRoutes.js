@@ -2,7 +2,7 @@ import { addnewBook, deleteBook, deleteProduct, getBooks, getBookWithID, getProd
 
 const bookRoutes = (app) => {
 
-    app.route('/books')
+    app.route('/')
 
         .post(addnewBook)
         

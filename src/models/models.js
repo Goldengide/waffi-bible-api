@@ -1,17 +1,22 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
-export const ChapterSchema = new Schema({
-    name: { 
+export const VersesSchema = new Schema({
+    text: { 
         type: String,
-        required: 'Enter a Chapter name'
+        required: 'Make sure say you enter the scripture before you halla button'
     },
-    description: {
+    chapter: { 
+        type: Number,
+        required: 'Shooo! You no go enter chapter number?'
+    },
+    number: {
+        type: Number,
+        required: 'Shooo! You no go enter verse number?'
+    },
+    topic: {
         type: String,
-        required: 'Enter a Chapters description'
-    },
-    noofVerses: {
-        type: Number
+
     },
     created_date:  {
         type: Date,
@@ -19,20 +24,20 @@ export const ChapterSchema = new Schema({
     }
 })
 
-export const BookSchema = new Schema({
+ const BookSchema = new Schema({
     name: { 
         type: String,
-        required: 'Enter a Book name'
+        required: 'My person but you never enter the title of the Book wey you wan submit'
     },
     short_name: { 
         type: String,
-        required: 'Enter short name for the Book'
+        required: 'Make sure say you enter the short_name before you halla button'
     },
     description: {
         type: String,
-        required: 'Enter a Books description'
+        required: 'This one dey very important'
     },
-    chapters: ChapterSchema,
+    verses: VersesSchema,
     noofChapters: {
         type: Number
     },
@@ -41,3 +46,5 @@ export const BookSchema = new Schema({
         default: Date.now
     }
 })
+
+export const Book = mongoose.model('Book', BookSchema);
