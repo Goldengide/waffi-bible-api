@@ -4,15 +4,15 @@ const Schema = mongoose.Schema;
 export const VersesSchema = new Schema({
     text: { 
         type: String,
-        required: 'Make sure say you enter the scripture before you halla button'
+        required: [true, 'Make sure say you enter the scripture before you halla button']
     },
     chapter: { 
         type: Number,
-        required: 'Shooo! You no go enter chapter number?'
+        required: [true, 'Shooo! You no go enter chapter number?']
     },
     number: {
         type: Number,
-        required: 'Shooo! You no go enter verse number?'
+        required: [true, 'Shooo! You no go enter verse number?']
     },
     topic: {
         type: String,
@@ -39,7 +39,6 @@ export const VersesSchema = new Schema({
     },
     verses: {
         type: [ VersesSchema ],
-        required: true
     },
     noofChapters: {
         type: Number
