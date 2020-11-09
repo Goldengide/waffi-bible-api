@@ -29,7 +29,7 @@ export const VersesSchema = new Schema({
         type: String,
         required: 'My person but you never enter the title of the Book wey you wan submit'
     },
-    short_name: { 
+    shortname: { 
         type: String,
         required: 'Make sure say you enter the short_name before you halla button'
     },
@@ -37,7 +37,10 @@ export const VersesSchema = new Schema({
         type: String,
         required: 'This one dey very important'
     },
-    verses: VersesSchema,
+    verses: {
+        type: [ VersesSchema ],
+        required: true
+    },
     noofChapters: {
         type: Number
     },
