@@ -3,6 +3,16 @@ import { Book } from "../models/models";
 // import { ChapterSchema } from "../models/models";
 
 
+const apiResponse = (message, data, status, errorCode = false,) => {
+    return {
+        status: status,
+        message: message,
+        data: data,
+        if(errorCode) {
+            errorCode: errorCode
+        }
+    }
+}
 export const addnewBook = (req, res) => {
     let newBook = new Book(req.body);
 
@@ -32,6 +42,7 @@ export const getProductWithID = (req, res) => {
         res.json(Product);
     })
 }
+
 
 export const updateProduct = (req, res) => {
     Product.findOneAndUpdate(

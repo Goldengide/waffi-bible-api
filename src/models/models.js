@@ -6,10 +6,6 @@ export const VersesSchema = new Schema({
         type: String,
         required: [true, 'Make sure say you enter the scripture before you halla button']
     },
-    chapter: { 
-        type: Number,
-        required: [true, 'Shooo! You no go enter chapter number?']
-    },
     number: {
         type: Number,
         required: [true, 'Shooo! You no go enter verse number?']
@@ -24,6 +20,17 @@ export const VersesSchema = new Schema({
     }
 })
 
+const chapterSchema = new Schema({
+    number: {type: Number},
+    audio_url: {type: String, default: null},
+    picture_url: {type: String, default: null},
+    verses: [VersesSchema],
+    created_date:  {
+        type: Date,
+        default: Date.now
+    }
+})
+
  const BookSchema = new Schema({
     name: { 
         type: String,
@@ -31,14 +38,16 @@ export const VersesSchema = new Schema({
     },
     shortname: { 
         type: String,
+        unique: true,
         required: 'Make sure say you enter the short_name before you halla button'
     },
     description: {
         type: String,
         required: 'This one dey very important'
     },
-    verses: {
-        type: [ VersesSchema ],
+    chapters: {
+        type: [ chapterSchema ],
+        required: true
     },
     noofChapters: {
         type: Number

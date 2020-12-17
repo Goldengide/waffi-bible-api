@@ -20,6 +20,15 @@ mongoose.connect('mongodb://localhost/productsdb', {
 // bodyparser setup
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json()); 
+app.use(express.json());
+
+app.use(function (req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Headers', '*');
+    next();
+  });
+
+
 
 //  Routes
 bookRoutes(app);
