@@ -1,7 +1,7 @@
 import { getVersesByBookID, getVersesByChapter, getVersesByBookNameAndChapterNumber, addVerseByBookNameAndChapterNumber, VerseValidator, addNewChapter, ChapterValidator } from "../controllers/versesControllers";
 
 const versesRoutes = (app) => {
-    app.route('/verses/:ShortBookName/:chapterNumber')
+    app.route('/books/name/:ShortBookName/:chapterNumber')
         .get(getVersesByBookNameAndChapterNumber)
         .post(VerseValidator(), addVerseByBookNameAndChapterNumber);
 

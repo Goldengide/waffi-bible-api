@@ -163,14 +163,49 @@ export const getBookWithID = async (req, res) => {
 
 }
 
-export const getBookWithName = (req, res) => {
+export const getBookWithName = async(req, res) => {
     let bookShortName = req.params.BookShortName;
-    Book.find({ shortname: bookShortName }, (err, Book) => {
-        if (err) {
-            res.send(err)
+    bookShortName = bookShortName.toLowerCase();
+    let data, message, errorCode, status;
+
+    let links = [];
+
+
+    try {
+
+        let bookWithShortname = await Book.find({ shortname: bookShortName }).exec();
+
+
+        if (bookWithShortname) {
+
+            data = bookWithShortname[0];
+
+            message = `Details of ${req.params.BookShortName} generated`;
+
+            status = "successful";
+
+            errorCode = null;
+
         }
-        res.json(Book);
-    })
+
+    } catch (error) {
+
+
+        data = null;
+
+        message = "There was an error somewhere";
+
+        status = "failed";
+
+        errorCode = JSON.stringify(error);
+
+    }
+
+
+    let result = apiResponse(status, message, data, [], errorCode);
+
+    res.json(result);
+    
 }
 
 // export const getBookWithNameAndChapterNumber = (req, res) => {}
@@ -210,5 +245,7 @@ export const deleteBooks = async (req, res) => {
 
 
 export const addChapter = (req, res) => { }
+
+// export const getChapters = (req, res) => { }
 
 

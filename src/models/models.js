@@ -49,7 +49,7 @@ const chapterSchema = new Schema({
         type: [ chapterSchema ],
         required: true
     },
-    noofChapters: {
+    noOfChapters: {
         type: Number
     },
     created_date:  {

@@ -73,6 +73,7 @@ export const addVerseByBookNameAndChapterNumber = async (req, res) => {
     let message, data, links, success, code, apiResponseJsonFormat;
     links = [];
     ShortBookName = req.params.ShortBookName;
+    ShortBookName = ShortBookName.toLowerCase();
     chapterNumber = req.params.chapterNumber;
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
