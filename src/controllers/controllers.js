@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import { Book } from "../models/models";
+import {_} from "underscore";
 // import { ChapterSchema } from "../models/models";
 
 
@@ -13,6 +14,16 @@ const apiResponse = (message, data, status, errorCode = false,) => {
         }
     }
 }
+
+
+export const Members =  function(args) {
+    _.extend(this,args);
+    this.emailIsValid = function () {
+        return this.email && this.email.length > 3;
+    }
+}
+
+
 export const addnewBook = (req, res) => {
     let newBook = new Book(req.body);
 

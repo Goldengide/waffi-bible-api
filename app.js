@@ -9,8 +9,8 @@ const app = express();
 const PORT = 3030;
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/productsdb', {
-    useNewUrlParser: true, 
+mongoose.connect('mongodb://localhost/bibledb', {
+    useNewUrlParser: true,
     useUnifiedTopology:true
 });
 
@@ -19,7 +19,7 @@ mongoose.connect('mongodb://localhost/productsdb', {
 
 // bodyparser setup
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json()); 
+app.use(bodyParser.json());
 app.use(express.json());
 
 app.use(function (req, res, next) {
@@ -37,6 +37,6 @@ app.get('/', (req, res) =>
     res.send(`Store server running on port ${PORT}`)
 );
 
-app.listen(PORT, () => 
+app.listen(PORT, () =>
     console.log(`Your server is running on port ${PORT}`)
 );
