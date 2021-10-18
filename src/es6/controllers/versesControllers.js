@@ -99,8 +99,8 @@ export const addVerseByBookNameAndChapterNumber = async (req, res) => {
             apiResponseJsonFormat = apiResponse(success, message, data, links);
             res.status(code).json(apiResponseJsonFormat);
             next();
-    
-            
+
+
         } catch (error) {
             // data = null;
             // code = 400;
@@ -112,8 +112,8 @@ export const addVerseByBookNameAndChapterNumber = async (req, res) => {
             // res.json(error);
         }
     }
-    
-    
+
+
     // res.json({ShortBookName,chapterNumber, book});
 
 }
@@ -129,7 +129,7 @@ export const updateVerseByBookNameAndChapterNumber = (req, res) => {
     let ShortBookName, chapterNumber;
     ShortBookName = req.params.ShortBookName;
     chapterNumber = req.params.chapterNumber;
-    
+
     res.json({ShortBookName,chapterNumber});
 
 }
@@ -138,7 +138,7 @@ export const deleteVerseByBookNameAndChapterNumber = (req, res) => {
     let ShortBookName, chapterNumber;
     ShortBookName = req.params.ShortBookName;
     chapterNumber = req.params.chapterNumber;
-    
+
     res.json({ShortBookName,chapterNumber});
 
 }
@@ -146,7 +146,7 @@ export const deleteVerseByBookNameAndChapterNumber = (req, res) => {
 export const getVersesByBookID = (req, res) => {
     Book.findById(req.params.BookID, (err, Book) => {
         if (err) {
-            res.send(err)   
+            res.send(err)
         }
         res.json(Book.verses);
     });

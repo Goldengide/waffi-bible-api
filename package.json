@@ -4,8 +4,11 @@
   "description": "This the first version ever of a unique translation of the Bible in warri language",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon ./app.js --exec babel-node -e js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./app-es5.js",
+    "es6style": "nodemon ./app.js --exec babel-node -e js",
+    "prod": "nodemon ./app.js --exec babel-node -e js",
+    "dev": "nodemon ./app.js --exec babel-node -e js",
+    "test": "mocha --exit './test/**/*.spec.js' || true"
   },
   "author": "",
   "license": "ISC",
@@ -19,13 +22,14 @@
     "morgan": "^1.10.0",
     "nodemon": "^2.0.4",
     "passport": "^0.4.1",
-    "underscore": "^1.12.0"
+    "underscore": "^1.13.1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-0": "^6.24.1",
     "debug": "^4.2.0",
+    "mocha": "^9.1.2",
     "sinon": "^9.2.4"
   }
 }
