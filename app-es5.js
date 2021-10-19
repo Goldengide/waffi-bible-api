@@ -10,7 +10,9 @@ const app = express();
 const PORT = 3020;
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/bibledb', {
+let uri = "mongodb+srv://bibledb:waffi-alexander@cluster0.i0qv2.mongodb.net/test"
+
+mongoose.connect(uri, {
     useNewUrlParser: true,
     useUnifiedTopology:true
 });
@@ -33,11 +35,11 @@ app.use(function (req, res, next) {
 
 //  Routes
 bookRoutes(app);
-casualRoutes(app);
+// casualRoutes(app);
 // versesRoutes(app);
 app.get('/', (req, res) =>
-    // res.json(`Store server running on port ${PORT}`)
-    res.json(testObjects)
+    res.json(`Store server running on port ${PORT}`)
+    // res.json(testObjects)
 );
 
 app.listen(PORT, () =>
